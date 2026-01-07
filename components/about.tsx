@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import Image from "next/image"
+
+const basePath = process.env.NODE_ENV === "production" ? "/emoceans" : ""
 
 export function About() {
   return (
@@ -25,7 +25,7 @@ export function About() {
           <div className="flex justify-center mb-12">
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[var(--vista-bleu)]/30">
               <Image
-                src="/assets/reetika.jpeg"
+                src={`${basePath}/assets/reetika.jpeg`}
                 alt="Reetika - Therapist"
                 fill
                 className="object-cover"
