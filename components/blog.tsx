@@ -41,7 +41,7 @@ export function Blog() {
           }`}
         >
           <div className="max-w-2xl">
-            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-balance">Thoughts & insights</h2>
+            <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-balance">From my side of the Couch</h2>
             <p className="text-xl text-muted-foreground">Reflections on the human experience</p>
           </div>
         </div>
