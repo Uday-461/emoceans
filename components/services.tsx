@@ -1,5 +1,8 @@
+"use client"
+
 import { Card } from "@/components/ui/card"
 import { User, Users, Sparkles } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const services = [
   {
@@ -26,21 +29,35 @@ const services = [
 ]
 
 export function Services() {
+  const headerAnim = useScrollAnimation()
+  const cardsAnim = useScrollAnimation()
+
   return (
     <section id="services" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mb-16">
+        <div
+          ref={headerAnim.ref}
+          className={`max-w-3xl mb-16 transition-all duration-700 ${
+            headerAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-balance">How we work together</h2>
           <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
             Every person's journey is unique. Choose the approach that resonates with where you are right now.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={cardsAnim.ref}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-8 hover:shadow-lg transition-shadow border-2 hover:border-[var(--orange)]/50"
+              className={`p-8 hover:shadow-lg transition-all border-2 hover:border-[var(--orange)]/50 duration-700 ${
+                cardsAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"

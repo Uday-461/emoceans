@@ -7,8 +7,10 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
+import { useEffect, useState } from "react"
 
 const reviews = [
   {
@@ -117,6 +119,21 @@ const reviews = [
 
 
 export function Reviews() {
+  const [api, setApi] = useState<CarouselApi>()
+  const [current, setCurrent] = useState(0)
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!api) return
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap())
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+  }, [api])
+
   return (
     <section id="reviews" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 lg:px-8">
@@ -127,13 +144,14 @@ export function Reviews() {
 
         <div className="px-12">
           <Carousel
+            setApi={setApi}
             opts={{
               align: "start",
               loop: true,
             }}
             plugins={[
               Autoplay({
-                delay: 4000,
+                delay: 5000,
                 stopOnInteraction: true,
                 stopOnMouseEnter: true,
               }),
@@ -159,6 +177,22 @@ export function Reviews() {
             <CarouselPrevious className="hidden md:flex" />
             <CarouselNext className="hidden md:flex" />
           </Carousel>
+
+          {/* Pagination dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === current
+                    ? "bg-[var(--orange)] w-6"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,35 +1,36 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Mail, Linkedin, MessageCircle } from "lucide-react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Contact() {
+  const headerAnim = useScrollAnimation()
+  const cardAnim = useScrollAnimation()
+
   return (
     <section id="contact" className="py-24 bg-muted/30 relative overflow-hidden">
-      {/* Decorative wave */}
-      <div className="absolute bottom-0 left-0 w-full h-64 opacity-10">
-        <svg
-          className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 200"
-          preserveAspectRatio="none"
-        >
-          <path
-            fill="var(--vista-bleu)"
-            d="M0,100 C360,150 720,50 1080,100 C1280,125 1440,100 1440,100 L1440,200 L0,200 Z"
-          />
-        </svg>
-      </div>
-
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div
+            ref={headerAnim.ref}
+            className={`text-center mb-16 transition-all duration-700 ${
+              headerAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <h2 className="text-5xl md:text-6xl font-serif font-bold mb-6 text-balance">Ready to dive in?</h2>
             <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
               The first step is reaching out. Let's talk about what you're looking for and see if we're a good fit.
             </p>
           </div>
 
-          <Card className="p-8 md:p-12 border-2 mb-8">
+          <Card
+            ref={cardAnim.ref}
+            className={`p-8 md:p-12 border-2 mb-8 transition-all duration-700 delay-200 ${
+              cardAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
               <div className="flex flex-col items-center text-center">
                 <div

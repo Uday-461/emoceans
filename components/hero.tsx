@@ -1,33 +1,22 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function Hero() {
+  const anim = useScrollAnimation()
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background waves */}
-      <div className="absolute inset-0 z-0">
-        <svg
-          className="absolute bottom-0 left-0 w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 800"
-          preserveAspectRatio="none"
-        >
-          <path
-            className="wave opacity-20"
-            fill="var(--vista-bleu)"
-            d="M0,400 C320,500 640,300 960,400 C1280,500 1440,400 1440,400 L1440,800 L0,800 Z"
-          />
-          <path
-            className="wave opacity-30"
-            fill="var(--orange)"
-            d="M0,500 C360,600 720,400 1080,500 C1280,550 1440,500 1440,500 L1440,800 L0,800 Z"
-          />
-        </svg>
-      </div>
-
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-4xl">
+        <div
+          ref={anim.ref}
+          className={`max-w-4xl transition-all duration-700 ${
+            anim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif font-bold mb-6 text-balance">
             Navigate your <span className="text-[var(--orange)]">emotional</span> depths
           </h1>
