@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { blogPosts } from "@/lib/blog-posts"
 
-const basePath = process.env.NODE_ENV === "production" ? "/emoceans" : ""
 
 export function Blog() {
   const headerAnim = useScrollAnimation()
@@ -31,7 +30,7 @@ export function Blog() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {blogPosts.map((post, index) => (
-            <Link key={post.slug} href={`${basePath}/blog/${post.slug}`}>
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
               <Card
                 className={`p-8 hover:shadow-lg transition-all hover:-translate-y-1 border-2 hover:border-[var(--orange)]/50 cursor-pointer duration-700 h-full ${
                   cardsAnim.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

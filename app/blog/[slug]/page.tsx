@@ -4,7 +4,6 @@ import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { getPostBySlug, getAllSlugs } from "@/lib/blog-posts"
 
-const basePath = process.env.NODE_ENV === "production" ? "/emoceans" : ""
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({
@@ -28,7 +27,7 @@ export default async function BlogPostPage({
     <div className="min-h-screen pt-20">
       <article className="container mx-auto px-4 lg:px-8 py-12 max-w-3xl">
         {/* Back button */}
-        <Link href={`${basePath}/#blog`}>
+        <Link href="/#blog">
           <Button
             variant="ghost"
             className="mb-8 -ml-4 text-muted-foreground hover:text-foreground"
@@ -130,7 +129,7 @@ export default async function BlogPostPage({
 
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-border">
-          <Link href={`${basePath}/#contact`}>
+          <Link href="/#contact">
             <Button className="bg-[var(--orange)] hover:bg-[var(--orange)]/90 text-white rounded-full">
               Ready to start your journey? Connect with me
             </Button>
