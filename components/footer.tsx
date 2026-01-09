@@ -18,7 +18,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-3xl font-serif font-bold mb-4">Emoceans</h3>
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Therapy that respects your intelligence. Navigate your emotional depths with clarity and courage.
+              Therapy that respects your intelligence, and helps you navigate your emotional depths with empathy and compassion.
             </p>
           </div>
 
