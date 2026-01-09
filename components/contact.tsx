@@ -85,14 +85,24 @@ export function Contact() {
             </div>
           </Card>
 
-          <div className="text-center mb-8">
-            <p className="text-lg font-semibold text-foreground mb-2">Online Therapy Only</p>
-            <p className="text-muted-foreground">Sessions available worldwide via secure video platform</p>
+          <div className="grid md:grid-cols-3 gap-6 text-center mb-8">
+            <div>
+              <p className="font-semibold text-foreground mb-1">Online Therapy Only</p>
+              <p className="text-sm text-muted-foreground">Sessions available worldwide via secure video platform</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">Available 7 Days a Week</p>
+              <p className="text-sm text-muted-foreground">With prior notice</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">Free 15-Min Consultation</p>
+              <p className="text-sm text-muted-foreground">Connect with me to know more</p>
+            </div>
           </div>
 
           <div className="text-center">
             <p className="text-muted-foreground">
-              Typical response time: <span className="font-semibold text-foreground">24-48 hours</span>
+              Typical response time: <span className="font-semibold text-foreground">24 hours</span>
             </p>
           </div>
         </div>
