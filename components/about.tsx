@@ -77,10 +77,6 @@ export function About() {
                 and those with attachment- and relationship-based concerns. I also do my best to create a trauma and
                 grief-informed space for every version of you (even the versions you have been running away from).
               </p>
-              <p className="text-foreground">
-                Something I want to give a heads up on is that my role is not to fix you, but to sit with you long enough
-                for insight, self-compassion, and meaningful choice to slowly emerge.
-              </p>
             </div>
           </div>
 
